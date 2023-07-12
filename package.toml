@@ -1,0 +1,41 @@
+name = "template"
+version = "0.1.0"
+collection = "App"
+platforms = ["Server", "Client"] # Client | Server
+
+priority = 100
+provides = ["template"]
+# os_support = ["debian-10", "debian-11", "ubuntu-20.04", "ubuntu-22.04"]
+
+[recommend]
+on_level = "Project" # *Proxy | Cluster | Project
+count = 1 # How many nodes on the given level // empty for all
+message = """
+Template app to use as app building scaffolding. \
+This message appears on the package register prompt \
+when user is selecting from a list.
+"""
+
+# Requires port 80 to be available on the host node.
+[[ports]]
+name = "http_unsecure"
+fixed = 80
+protocol = "tcp"
+public = true
+
+# Assigns random port.
+[[ports]]
+name = "admin_panel"
+protocol = "tcp"
+public = false
+
+# Requires dir /etc/template to be available on the host node.
+[[dirs]]
+name = "template_program_installation"
+fixed = "/etc"
+relative = "template"
+
+# Uses relative dir under node's preferred storage path.
+[[dirs]]
+name = "template_data"
+relative = "template_data"

@@ -1,0 +1,57 @@
+help = "Commands to insert to carburator CLI from App template"
+
+# Run simple echo command with one argument
+########################################################
+
+[command.echo]
+help = "Test host command, jinja2 templated command string."
+platform = ["Client", "Server"]
+command = "echo {{ text }}"
+
+[command.echo.args.text]
+help = "Print text and shit"
+value_is = "String" # Boolean | String | Array
+arg_index = 1
+required = true
+
+# Run heavily templated command with argument and flags
+########################################################
+
+[command.ls]
+help = "Test ls command. Templated command where flags render conditionally."
+platform = ["Client", "Server"]
+command = "ls {% if long %}-l{% endif %} {% if all %}-a{% endif %} {{ path }}"
+
+[command.ls.args.path]
+help = "Path to directory root where command should be executed"
+value_is = "String" # Boolean | String | Array
+arg_index = 1
+required = true
+
+[command.ls.args.long]
+long = "long"
+short = "l"
+value_is = "Boolean" # Boolean | String | Array
+required = false
+
+[command.ls.args.all]
+long = "all"
+short = "a"
+value_is = "Boolean" # Boolean | String | Array
+required = false
+
+# Run 'register' executor with custom argument
+########################################################
+
+[command.register]
+help = "Run register executor with a custom node role"
+platform = ["Client"]
+
+[command.register.executor]
+tail = "register"
+
+[command.register.args.role]
+help = "Node role to use for register"
+value_is = "String"
+arg_index = 1
+required = true
