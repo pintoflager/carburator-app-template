@@ -8,7 +8,7 @@ provides = ["template"]
 # os_support = ["debian-10", "debian-11", "ubuntu-20.04", "ubuntu-22.04"]
 
 [recommend]
-on_level = "Project" # *Proxy | Cluster | Project
+scope = "Project" # *Proxy | Cluster | Project
 count = 1 # How many nodes on the given level // empty for all
 message = """
 Template app to use as app building scaffolding. \

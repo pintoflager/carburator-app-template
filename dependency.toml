@@ -1,10 +1,10 @@
 [dependency.bash]
 optional = false
-on_level = "Node" # Node | Cluster | Project | Client
+scope = "Node" # Node | Cluster | Project | Client
 collection = "Executor"
 
 [dependency.python]
 optional = false
-on_level = "Node" # Node | Cluster | Project | Client
+scope = "Node" # Node | Cluster | Project | Client
 optional_with = ["bash"]
 collection = "Executor"
